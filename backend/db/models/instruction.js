@@ -13,7 +13,6 @@ module.exports = (sequelize, DataTypes) => {
   Instruction.associate = function(models) {
     // associations can be defined here
     Instruction.belongsTo(models.Project, { foreignKey: 'projectId' });
-    Instruction.belongsTo(models.Project, { foreignKey: 'step' });
     Instruction.hasMany(models.Image, { foreignKey: 'instructionId' });
     Instruction.hasMany(models.Video, { foreignKey: 'instructionId' });
   };

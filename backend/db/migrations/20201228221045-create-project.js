@@ -13,9 +13,8 @@ module.exports = {
         allowNull: false,
       },
       step: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
         allowNull: false,
-        references: { model: 'Instructions' },
       },
       userId: {
         type: Sequelize.INTEGER,
