@@ -17,6 +17,11 @@ module.exports = {
 
     const users = await queryInterface.bulkInsert('Users', [
       {
+        email: 'demo@user.io',
+        username: 'Demo-lition',
+        hashedPassword: bcrypt.hashSync('password'),
+      },
+      {
         email: faker.internet.email(),
         username: faker.internet.userName(),
         hashedPassword: bcrypt.hashSync(faker.internet.password()),
@@ -83,15 +88,15 @@ module.exports = {
 
     const projects = await queryInterface.bulkInsert('Projects', [
       { name: faker.random.words(), step: '1', userId: user1 },
-      { name: faker.random.words(), step: '2', userId: user1 },
-      { name: faker.random.words(), step: '3', userId: user1 },
-      { name: faker.random.words(), step: '4', userId: user1 },
-      { name: faker.random.words(), step: '5', userId: user1 },
-      { name: faker.random.words(), step: '6', userId: user1 },
-      { name: faker.random.words(), step: '7', userId: user1 },
-      { name: faker.random.words(), step: '8', userId: user1 },
-      { name: faker.random.words(), step: '9', userId: user1 },
-      { name: faker.random.words(), step: '10', userId: user1 },
+      { name: faker.random.words(), step: '1', userId: user2 },
+      { name: faker.random.words(), step: '1', userId: user3 },
+      { name: faker.random.words(), step: '1', userId: user4 },
+      { name: faker.random.words(), step: '1', userId: user5 },
+      { name: faker.random.words(), step: '1', userId: user6 },
+      { name: faker.random.words(), step: '1', userId: user7 },
+      { name: faker.random.words(), step: '1', userId: user8 },
+      { name: faker.random.words(), step: '1', userId: user9 },
+      { name: faker.random.words(), step: '1', userId: user10 },
     ], {
       returning: true
     });
