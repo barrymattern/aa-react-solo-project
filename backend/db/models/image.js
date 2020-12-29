@@ -8,6 +8,10 @@ module.exports = (sequelize, DataTypes) => {
         len: [3, 200],
       },
     },
+    projectId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
     instructionId: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -16,6 +20,7 @@ module.exports = (sequelize, DataTypes) => {
   Image.associate = function(models) {
     // associations can be defined here
     Image.belongsTo(models.Instruction, { foreignKey: 'instructionId' });
+    Image.belongsTo(models.Project, { foreignKey: 'projectId' });
   };
   return Image;
 };

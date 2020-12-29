@@ -170,23 +170,23 @@ module.exports = {
     const instruction12 = instructions[20].id
 
     const images = await queryInterface.bulkInsert('Images', [
-      { url: faker.image.imageUrl(), instructionId: instruction1 },
-      { url: faker.image.imageUrl(), instructionId: instruction2 },
-      { url: faker.image.imageUrl(), instructionId: instruction3 },
-      { url: faker.image.imageUrl(), instructionId: instruction4 },
-      { url: faker.image.imageUrl(), instructionId: instruction5 },
-      { url: faker.image.imageUrl(), instructionId: instruction6 },
+      { url: faker.image.imageUrl(), projectId: project1,instructionId: instruction1 },
+      { url: faker.image.imageUrl(), projectId: project2,instructionId: instruction2 },
+      { url: faker.image.imageUrl(), projectId: project3,instructionId: instruction3 },
+      { url: faker.image.imageUrl(), projectId: project4,instructionId: instruction4 },
+      { url: faker.image.imageUrl(), projectId: project5,instructionId: instruction5 },
+      { url: faker.image.imageUrl(), projectId: project6,instructionId: instruction6 },
     ], {
       returning: true
     });
 
     const videos = await queryInterface.bulkInsert('Videos', [
-      { url: faker.image.imageUrl(), instructionId: instruction7 },
-      { url: faker.image.imageUrl(), instructionId: instruction8 },
-      { url: faker.image.imageUrl(), instructionId: instruction9 },
-      { url: faker.image.imageUrl(), instructionId: instruction10 },
-      { url: faker.image.imageUrl(), instructionId: instruction11 },
-      { url: faker.image.imageUrl(), instructionId: instruction12 },
+      { url: faker.image.imageUrl(), projectId: project7,instructionId: instruction7 },
+      { url: faker.image.imageUrl(), projectId: project8,instructionId: instruction8 },
+      { url: faker.image.imageUrl(), projectId: project9,instructionId: instruction9 },
+      { url: faker.image.imageUrl(), projectId: project10,instructionId: instruction10 },
+      { url: faker.image.imageUrl(), projectId: project1,instructionId: instruction11 },
+      { url: faker.image.imageUrl(), projectId: project2,instructionId: instruction12 },
     ], {
       returning: true
     });

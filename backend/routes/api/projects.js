@@ -15,11 +15,25 @@ const {
 
 const router = express.Router();
 
+// GET all projects
 router.get(
   '/',
   asyncHandler(async (req, res) => {
-    let projects = await Project.findAll();
+    const projects = await Project.findAll({
+      include: [ User, Image ]
+    });
     return res.json(projects);
+  }),
+);
+
+// GET individual project
+router.get(
+  '/:id',
+  asyncHandler(async (req, res) => {
+    const project = await Project.findByPk(req.params.id, {
+      include: [ User, Instruction, Comment, Image, Video ]
+    });
+    return res.json(project);
   }),
 );
 

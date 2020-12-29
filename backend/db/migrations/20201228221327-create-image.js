@@ -12,6 +12,11 @@ module.exports = {
         type: Sequelize.STRING(200),
         allowNull: false,
       },
+      projectId: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: { model: 'Projects' },
+      },
       instructionId: {
         type: Sequelize.INTEGER,
         allowNull: false,
