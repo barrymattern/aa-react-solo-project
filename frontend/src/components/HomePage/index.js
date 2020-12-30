@@ -1,7 +1,10 @@
-import { fetch } from '../../store/csrf';
+// import { fetch } from '../../store/csrf';
 import { useEffect, useState } from 'react';
 
-// Project component does not have to be in different file
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchAllProjects } from '../../store/projects';
+
+// Project component – does not have to be in different file
 const Project = ({ theProject }) => {
   return (
     <div>
@@ -14,13 +17,21 @@ const Project = ({ theProject }) => {
   );
 };
 
+// HomePage component
 const HomePage = () => {
-  const [currentProjects, setProjects] = useState([]);
+  const dispatch = useDispatch(); // Send Action to Redux
+  
+  // const [currentProjects, setProjects] = useState([]);
+  const currentProjects = useSelector(fullReduxState => {
+    return fullReduxState.projects;
+  });
 
   useEffect(async () => {
-    const response = await fetch('/api/projects');
-    setProjects(response.data);
-  }, []);
+    // Request to server
+    dispatch(
+      fetchAllProjects() // Thunk from projects.js
+    );
+  }, [dispatch]);
 
   return (
     <div id='home-page'>
@@ -34,33 +45,3 @@ const HomePage = () => {
 };
 
 export default HomePage;
-
-
-
-// import { fetch } from '../../store/csrf';
-// import { useEffect, useState } from 'react';
-
-// import { useDispatch, useSelector } from 'react-redux';
-// import { getProjects } from '../../store/projects';
-
-// const Project = ({project}) => {
-
-//   return (
-//     <div>
-//       <h3>{project.name}</h3>
-//     </div>
-//   );
-// };
-
-// const HomePage = () => {
-//   const dispatch = useDispatch();
-//   const currentProjects = useSelector();
-
-//   return (
-//     <div>
-//       <h3>{project.name}</h3>
-//     </div>
-//   );
-// };
-
-// export default HomePage;
