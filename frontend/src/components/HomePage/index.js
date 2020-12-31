@@ -1,6 +1,4 @@
-// import { fetch } from '../../store/csrf';
-import { useEffect, useState } from 'react';
-
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchAllProjects } from '../../store/projects';
 
@@ -8,11 +6,11 @@ import { fetchAllProjects } from '../../store/projects';
 const Project = ({ theProject }) => {
   return (
     <div>
-      {theProject.Images.map(image => {
-        return <img src={image.url} alt='project visual' />
+      {theProject.Images.map((image, idx) => {
+        return <img src={image.url} alt='project visual' key={idx}/>
       })}
       <h3>{theProject.name}</h3>
-      <h4>{theProject.User.username}</h4>
+      <p>{theProject.User.username}</p>
     </div>
   );
 };
@@ -20,11 +18,6 @@ const Project = ({ theProject }) => {
 // HomePage component
 const HomePage = () => {
   const dispatch = useDispatch(); // Send Action to Redux
-  
-  // const [currentProjects, setProjects] = useState([]);
-  const currentProjects = useSelector(fullReduxState => {
-    return fullReduxState.projects;
-  });
 
   useEffect(async () => {
     // Request to server
@@ -33,12 +26,16 @@ const HomePage = () => {
     );
   }, [dispatch]);
 
+  const currentProjects = useSelector(fullReduxState => {
+    return fullReduxState.projects;
+  });
+
   return (
     <div id='home-page'>
       <h2>Let's make something</h2>
       {!currentProjects && <h3>Better make something fast!</h3>} {/* replace with loading gif */}
-      {currentProjects && currentProjects.map((project) => {
-        return <Project theProject={project} />;
+      {currentProjects && currentProjects.map((project, idx) => {
+        return <Project theProject={project} key={idx}/>;
       })}
     </div>
   );

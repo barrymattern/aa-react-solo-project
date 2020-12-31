@@ -28,9 +28,9 @@ router.get(
 
 // GET individual project
 router.get(
-  '/:id',
+  '/:projectId',
   asyncHandler(async (req, res) => {
-    const project = await Project.findByPk(req.params.id, {
+    const project = await Project.findByPk(req.params.projectId, {
       include: [ User, Instruction, Comment, Image, Video ]
     });
     return res.json(project);
