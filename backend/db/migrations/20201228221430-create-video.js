@@ -19,7 +19,6 @@ module.exports = {
       },
       instructionId: {
         type: Sequelize.INTEGER,
-        allowNull: false,
         references: { model: 'Instructions' },
       },
       createdAt: {

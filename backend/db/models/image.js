@@ -14,7 +14,6 @@ module.exports = (sequelize, DataTypes) => {
     },
     instructionId: {
       type: DataTypes.INTEGER,
-      allowNull: false,
     },
   }, {});
   Image.associate = function(models) {
