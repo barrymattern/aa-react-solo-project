@@ -36,16 +36,19 @@ export const fetchOneProject = (projectId) => {
   };
 };
 
-const initialState = [];
+const initialState = {
+  all: [],
+  viewed: null,
+};
 
 function reducer(state = initialState, action) {
-  let newState;
+  let newState = {...state};
   switch (action.type) {
     case SET_ALL_PROJECTS:
-      newState = action.projects;
+      newState.all = action.projects;
       return newState;
     case SET_ONE_PROJECT:
-      newState = action.project;
+      newState.viewed = action.project;
       return newState;
     default:
       return state;

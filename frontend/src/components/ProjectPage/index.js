@@ -17,7 +17,17 @@ const ProjectPage = () => {
 
   
   const currentProject = useSelector(fullReduxState => {
-    return fullReduxState.projects;
+    return fullReduxState.projects.viewed;
+  });
+
+  if (!currentProject) return null;
+
+  // Ensure instructions are shown in page in order user chooses
+  const orderOfInstructions = JSON.parse(currentProject.step);
+  const instructionsInCorrectOrder = orderOfInstructions.map(instructionId => {
+    return currentProject.Instructions.find(instruction => {
+      return instruction.id === instructionId;
+    });
   });
 
   // TODO: add classes/ids for styling
@@ -40,8 +50,8 @@ const ProjectPage = () => {
           </div>
           <div>
             <h3>Instructions</h3>
-            {currentProject.Instructions &&
-              currentProject.Instructions.map((instruction, idx) => {
+            {instructionsInCorrectOrder &&
+              instructionsInCorrectOrder.map((instruction, idx) => {
                   return <p key={idx}>{instruction.text}</p>;
               })
             }

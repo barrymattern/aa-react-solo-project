@@ -14,7 +14,6 @@ module.exports = (sequelize, DataTypes) => {
     },
     instructionId: {
       type: DataTypes.INTEGER,
-      allowNull: false,
     },
   }, {});
   Video.associate = function(models) {

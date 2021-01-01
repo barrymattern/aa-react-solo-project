@@ -20,7 +20,7 @@ router.get(
   '/',
   asyncHandler(async (req, res) => {
     const projects = await Project.findAll({
-      include: [ User, Image ]
+      include: [ User, Image, Instruction ]
     });
     return res.json(projects);
   }),
