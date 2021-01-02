@@ -8,6 +8,8 @@ const ProjectPage = () => {
   const params = useParams();
   const { projectId } = params;
 
+  console.log('****** type of project id *******', typeof projectId, projectId);
+
   useEffect(async () => {
     // Request to server
     dispatch(
@@ -23,12 +25,12 @@ const ProjectPage = () => {
   if (!currentProject) return null;
 
   // Ensure instructions are shown in page in order user chooses
-  const orderOfInstructions = JSON.parse(currentProject.step);
-  const instructionsInCorrectOrder = orderOfInstructions.map(instructionId => {
-    return currentProject.Instructions.find(instruction => {
-      return instruction.id === instructionId;
-    });
-  });
+  // const orderOfInstructions = JSON.parse(currentProject.step);
+  // const instructionsInCorrectOrder = orderOfInstructions.map(instructionId => {
+  //   return currentProject.Instructions.find(instruction => {
+  //     return instruction.id === instructionId;
+  //   });
+  // });
 
   // TODO: add classes/ids for styling
   return (
@@ -50,8 +52,8 @@ const ProjectPage = () => {
           </div>
           <div>
             <h3>Instructions</h3>
-            {instructionsInCorrectOrder &&
-              instructionsInCorrectOrder.map((instruction, idx) => {
+            {currentProject.Instructions &&
+              currentProject.Instructions.map((instruction, idx) => {
                   return <p key={idx}>{instruction.text}</p>;
               })
             }

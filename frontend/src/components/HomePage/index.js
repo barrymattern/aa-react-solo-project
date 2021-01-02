@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { fetchAllProjects } from '../../store/projects';
 import HomePageStyle from './HomePage.css'
+import keyboardImage from '../../public/keyboard.jpg';
 
 // Project component – does not have to be in different file
 const Project = ({ theProject }) => {
@@ -31,11 +32,13 @@ const Project = ({ theProject }) => {
           }
         })}
       </div>
-      <h3
-        className='project-name'>
-        <Link to={`/projects/${theProject.id}`}>{theProject.name}</Link>
-      </h3>
-      <p className='project-username'>by {theProject.User.username}</p>
+      <div id='project-text'>
+        <h3
+          className='project-name'>
+          <Link to={`/projects/${theProject.id}`}>{theProject.name.toUpperCase()}</Link>
+        </h3>
+        <p className='project-username'>by {theProject.User.username}</p>
+      </div>
     </div>
   );
 };
@@ -55,17 +58,23 @@ const HomePage = () => {
     return fullReduxState.projects.all;
   });
 
-  console.log('CURRENT PROJECTS---------', currentProjects);
-
   return (
     <div id='home-page'>
       <div className='title'>
-        <h2 id='page-title'>Let's make something</h2>
+        <div id='darken-image'>
+          <h2 id='page-title'>
+          LET'S<br/>
+          CREATE<br/>
+          TOGETHER</h2>
+        </div>
+        <img id='keyboard' src={keyboardImage} alt='keyboard'/>
       </div>
-      {!currentProjects && <h3>Better make something fast!</h3>} {/* replace with loading gif */}
-      {currentProjects && currentProjects.map((project, idx) => {
-        return <Project theProject={project} key={idx}/>;
-      })}
+      <div className='all-projects-container'>
+        {!currentProjects && <h3>Better make something fast!</h3>} {/* replace with loading gif */}
+        {currentProjects && currentProjects.map((project, idx) => {
+          return <Project theProject={project} key={idx}/>;
+        })}
+      </div>
     </div>
   );
 };
