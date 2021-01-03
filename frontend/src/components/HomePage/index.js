@@ -58,8 +58,36 @@ const HomePage = () => {
     return fullReduxState.projects.all;
   });
 
+  const toggleBackgroundColor = () => {
+    const navy = "rgb(32, 35, 40)";
+    const gray = "rgb(84, 92, 92))";
+    const pink = "rgb(255, 58, 128)";
+    const white = "rgb(255, 255, 255)";
+    
+    let backgroundColor = document.body.style.backgroundColor;
+    let currentIndex = 0;
+
+    const interval = setInterval(() => {
+      const colorArr = [ navy, gray, pink, white ];
+
+      document.body.style.backgroundColor = colorArr[currentIndex];
+      currentIndex++;
+
+      if (currentIndex === undefined || currentIndex >= colorArr.length) {
+        currentIndex = 0;
+      }
+
+      // TODO: Fix bug to allow clearInterval
+      if (backgroundColor === white) {
+        clearInterval(interval);
+        document.body.style.backgroundColor = gray;
+      }
+    }, 1000);
+  };
+
   return (
-    <div id='home-page'>
+    <div className='home-page'>
+      <div id='surprise' onClick={toggleBackgroundColor}></div>
       <div className='title'>
         <div id='darken-image'>
           <h2 id='page-title'>
