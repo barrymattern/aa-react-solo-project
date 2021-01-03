@@ -9,8 +9,6 @@ const ProjectPage = () => {
   const params = useParams();
   const { projectId } = params;
 
-  console.log('****** type of project id *******', typeof projectId, projectId);
-
   useEffect(async () => {
     // Request to server
     dispatch(
