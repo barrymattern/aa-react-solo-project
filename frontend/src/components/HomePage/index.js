@@ -59,16 +59,20 @@ const HomePage = () => {
   });
 
   const toggleBackgroundColor = () => {
-    const navy = "rgb(32, 35, 40)";
-    const gray = "rgb(84, 92, 92))";
     const pink = "rgb(255, 58, 128)";
-    const white = "rgb(255, 255, 255)";
+    const yellow = "rgb(227, 255, 58)";
+    const green = "rgb(58, 255, 185)";
+    const purple = "rgb(87, 58, 255)";
+    // const navy = "rgb(32, 35, 40)";
+    const gray = "rgb(84, 92, 92))";
+    // const pink = "rgb(255, 58, 128)";
+    // const white = "rgb(255, 255, 255)";
     
     let backgroundColor = document.body.style.backgroundColor;
     let currentIndex = 0;
 
     const interval = setInterval(() => {
-      const colorArr = [ navy, gray, pink, white ];
+      const colorArr = [ pink, yellow, green, purple];
 
       document.body.style.backgroundColor = colorArr[currentIndex];
       currentIndex++;
@@ -78,7 +82,7 @@ const HomePage = () => {
       }
 
       // TODO: Fix bug to allow clearInterval
-      if (backgroundColor === white) {
+      if (backgroundColor === pink) {
         clearInterval(interval);
         document.body.style.backgroundColor = gray;
       }
