@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchOneProject } from '../../store/projects'
+import ProjectPageCss from '../ProjectPage/ProjectPage.css';
 
 const ProjectPage = () => {
   const dispatch = useDispatch();
@@ -34,9 +35,9 @@ const ProjectPage = () => {
 
   // TODO: add classes/ids for styling
   return (
-    <div>
+    <>
       {currentProject &&
-        <div>
+        <div >
           <div>
             <h2>{currentProject.name}</h2>
             {currentProject.User &&
@@ -66,9 +67,9 @@ const ProjectPage = () => {
               })
             }
           </div>
-        </div>  
+        </div>
       }
-    </div>
+    </>
   );
 };
 
