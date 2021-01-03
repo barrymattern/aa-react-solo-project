@@ -10,8 +10,9 @@ export async function fetch(url, options = {}) {
   // "application/json", and set the "CSRF-TOKEN" header to the value of the
   // "XSRF-TOKEN" cookie
   if (options.method.toUpperCase() !== 'GET') {
-    options.headers['Content-Type'] =
-      options.headers['Content-Type'] || 'application/json';
+    // 2 lines below commented out for AWS S3 upload
+    // options.headers['Content-Type'] =
+    //   options.headers['Content-Type'] || 'application/json';
     options.headers['XSRF-Token'] = Cookies.get('XSRF-TOKEN');
   }
   // call the default window's fetch with the url and the options passed in
